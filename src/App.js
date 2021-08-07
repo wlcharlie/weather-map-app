@@ -2,37 +2,56 @@ import React from 'react';
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
-  VStack,
-  Code,
   Grid,
   theme,
+  Text,
+  Flex,
+  GridItem,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+
+import Map from './components/Map';
+import Weather from './components/Weather';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
+        <Grid
+          minH="100vh"
+          p={3}
+          gap={3}
+          templateRows={['1fr 1fr 1fr 0.25fr', 'repeat(2, 1fr)']}
+          templateColumns={[null, 'repeat(3, 1fr)']}
+        >
+          <GridItem
+            w="100%"
+            h="100%"
+            bg="tomato"
+            borderRadius="lg"
+            colSpan={[null, '3']}
+          >
+            map here
+          </GridItem>
+          <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '1']}>
+            <Weather></Weather>
+          </GridItem>
+          <GridItem
+            w="100%"
+            h="100%"
+            bg="tomato"
+            borderRadius="lg"
+            colSpan={[null, '2']}
+          >
+            CHART
+          </GridItem>
+          <GridItem colSpan={[null, '3']}>
+            <Flex align="center" justify="center" my={2}>
+              <Text fontSize="md">Charlie | Blog | Repo</Text>
+              <ColorModeSwitcher justifySelf="flex-end" />
+            </Flex>
+          </GridItem>
         </Grid>
       </Box>
     </ChakraProvider>

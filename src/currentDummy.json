@@ -1,0 +1,92 @@
+{
+    "data": {
+        "coord": {
+            "lon": 38,
+            "lat": 55
+        },
+        "weather": [
+            {
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 299.97,
+            "feels_like": 299.54,
+            "temp_min": 296.04,
+            "temp_max": 300.01,
+            "pressure": 1008,
+            "humidity": 32,
+            "sea_level": 1008,
+            "grnd_level": 988
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 6.11,
+            "deg": 163,
+            "gust": 9.9
+        },
+        "clouds": {
+            "all": 79
+        },
+        "dt": 1628340495,
+        "sys": {
+            "type": 1,
+            "id": 9021,
+            "country": "RU",
+            "sunrise": 1628300863,
+            "sunset": 1628356792
+        },
+        "timezone": 10800,
+        "id": 577197,
+        "name": "Bereznya",
+        "cod": 200
+    },
+    "status": 200,
+    "statusText": "OK",
+    "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-methods": "GET, POST",
+        "access-control-allow-origin": "*",
+        "connection": "keep-alive",
+        "content-length": "510",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 07 Aug 2021 12:48:17 GMT",
+        "server": "RapidAPI-1.2.8",
+        "x-cache-key": "/data/2.5/weather?lat=55&lon=38&units=%22metric%22%20or%20%22imperial%22",
+        "x-rapidapi-region": "AWS - ap-northeast-1",
+        "x-rapidapi-version": "1.2.8",
+        "x-ratelimit-basic-limit": "500",
+        "x-ratelimit-basic-remaining": "482",
+        "x-ratelimit-basic-reset": "2666321"
+    },
+    "config": {
+        "url": "https://community-open-weather-map.p.rapidapi.com/weather",
+        "method": "get",
+        "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "x-rapidapi-key": "8cf140c231mshbbda773f6d26c91p1d8c6djsnf204e18eaab4",
+            "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com"
+        },
+        "params": {
+            "lat": "55",
+            "lon": "38",
+            "units": "\"metric\" or \"imperial\""
+        },
+        "transformRequest": [
+            null
+        ],
+        "transformResponse": [
+            null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1
+    },
+    "request": {}
+}
