@@ -31,7 +31,7 @@ const Weather = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Text className="fas fa-cloud fa-5x" color="gray.300" />
+          <Text className={`fas fa-cloud fa-5x`} color="gray.300" />
           <Text fontSize="3xl">
             {tempConvert(current.data.main.temp).tempC}
           </Text>

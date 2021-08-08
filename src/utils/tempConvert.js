@@ -4,6 +4,6 @@ export const tempConvert = K => {
   return {
     tempC: tempC + ' \xB0C',
     tempF: tempF + ' \xB0F',
-    tempK: K,
+    tempK: Number(K.toFixed(0)),
   };
 };

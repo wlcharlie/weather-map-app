@@ -13,6 +13,7 @@ import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 import Map from './components/Map';
 import Weather from './components/Weather';
+import Chart from './components/Chart';
 
 function App() {
   return (
@@ -20,33 +21,27 @@ function App() {
       <Box textAlign="center" fontSize="xl">
         <Grid
           minH="100vh"
-          p={3}
-          gap={3}
-          templateRows={['1fr 1fr 1fr 0.25fr', 'repeat(2, 1fr)']}
+          gap="3"
+          templateRows={['1fr 1fr 1fr 0.25fr', '50vh 40vh 5vh']}
           templateColumns={[null, 'repeat(3, 1fr)']}
         >
-          <GridItem
-            w="100%"
-            h="100%"
-            bg="tomato"
-            borderRadius="lg"
-            colSpan={[null, '3']}
-          >
-            map here
+          <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '3']}>
+            <Box w="100%" h="50vh" bg="tomato"></Box>
+            {/* <Map /> */}
           </GridItem>
           <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '1']}>
-            <Weather></Weather>
+            <Weather />
           </GridItem>
           <GridItem
             w="100%"
             h="100%"
-            bg="tomato"
+            px="3"
             borderRadius="lg"
             colSpan={[null, '2']}
           >
-            CHART
+            <Chart />
           </GridItem>
-          <GridItem colSpan={[null, '3']}>
+          <GridItem w="100%" h="100%" colSpan={[null, '3']}>
             <Flex align="center" justify="center" my={2}>
               <Text fontSize="md">Charlie | Blog | Repo</Text>
               <ColorModeSwitcher justifySelf="flex-end" />
