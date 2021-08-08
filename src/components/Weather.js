@@ -1,27 +1,34 @@
 import { useState, useEffect } from 'react';
 
-import { currentWeather, dailyWeather } from '../api/weatherAPI';
+import { currentWeather } from '../api/weatherAPI';
 import { tempConvert } from '../utils/tempConvert';
 import { unixConvert } from '../utils/unixConvert';
 
 import currentDummy from '../currentDummy.json';
-import { Text, Flex, Grid, GridItem, Divider, HStack } from '@chakra-ui/react';
+import {
+  Text,
+  Flex,
+  Grid,
+  GridItem,
+  Divider,
+  HStack,
+  Stack,
+  Skeleton,
+  Image,
+} from '@chakra-ui/react';
 
-const Weather = () => {
-  const [current, setCurrent] = useState(currentDummy);
+const Weather = ({ target }) => {
+  const [current, setCurrent] = useState(null);
+  // const { userTime, utcTime, localTime } = unixConvert(
+  //   current.data.dt,
+  //   current.data.timezone
+  // );
+  useEffect(async () => {
+    setCurrent(await currentWeather(target));
+  }, [target]);
   console.log(current);
-  const { userTime, utcTime, localTime } = unixConvert(
-    current.data.dt,
-    current.data.timezone
-  );
 
-  console.log(userTime);
-  console.log(utcTime);
-  console.log(localTime);
-  // useEffect(() => {
-  //   dailyWeather();
-  // }, []);
-  return (
+  return current ? (
     <Grid w="100%" h="100%" templateColumns={['1fr 1fr', null]}>
       <GridItem>
         <Flex
@@ -31,10 +38,15 @@ const Weather = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Text className={`fas fa-cloud fa-5x`} color="gray.300" />
+          <Image
+            boxSize="125px"
+            src={`http://openweathermap.org/img/wn/${current.data.weather[0].icon}@2x.png`}
+          />
+          {/* <Text className={`fas fa-cloud fa-5x`} color="gray.300" /> */}
           <Text fontSize="3xl">
             {tempConvert(current.data.main.temp).tempC}
           </Text>
+          <Text>{current.data.weather[0].main}</Text>
         </Flex>
       </GridItem>
       <GridItem pr={1}>
@@ -42,7 +54,10 @@ const Weather = () => {
           <Flex justify="space-between" align="baseline">
             <Text fontSize="3xl">{current.data.name}</Text>
             <Text fontSize="sm">
-              {localTime.split(' ').slice(0, 2).join(' ')}
+              {unixConvert(current.data.dt, current.data.timezone)
+                .localTime.split(' ')
+                .slice(0, 2)
+                .join(' ')}
             </Text>
           </Flex>
           <Divider my={2} />
@@ -72,6 +87,12 @@ const Weather = () => {
         </Flex>
       </GridItem>
     </Grid>
+  ) : (
+    <Stack>
+      <Skeleton height="20px" />
+      <Skeleton height="20px" />
+      <Skeleton height="20px" />
+    </Stack>
   );
 };
 

@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Box } from '@chakra-ui/layout';
 import H from '@here/maps-api-for-javascript';
 
-const Map = () => {
+const Map = props => {
   const [map, setMap] = useState(null);
+  const [mark, setMark] = useState({});
   const mapDom = useRef();
-  const location = { lat: 55, lng: 38 };
 
   useEffect(async () => {
     function resizeMap(mapping) {
@@ -19,11 +19,12 @@ const Map = () => {
       const layers = platform.createDefaultLayers();
       const mapping = new H.Map(mapDom.current, layers.vector.normal.map, {
         pixelRatio: window.devicePixelRatio,
-        center: location,
-        zoom: 10,
+        center: props.target,
+        zoom: 12,
       });
-      const marker = new H.map.Marker(location);
+      const marker = new H.map.Marker(props.target);
       mapping.addObject(marker);
+      setMark(marker);
 
       const mapEvents = new H.mapevents.MapEvents(mapping);
       mapping.addEventListener('tap', function getCoord(evt) {
@@ -31,15 +32,10 @@ const Map = () => {
           evt.currentPointer.viewportX,
           evt.currentPointer.viewportY
         );
-        console.log(coord.lat.toFixed(4), coord.lng.toFixed(4));
-        console.log(
-          'Clicked at ' +
-            Math.abs(coord.lat.toFixed(4)) +
-            (coord.lat > 0 ? 'N' : 'S') +
-            ' ' +
-            Math.abs(coord.lng.toFixed(4)) +
-            (coord.lng > 0 ? 'E' : 'W')
-        );
+        props.getCoordinate({
+          lat: +coord.lat.toFixed(4),
+          lng: +coord.lng.toFixed(4),
+        });
       });
 
       const behavior = new H.mapevents.Behavior(mapEvents);
@@ -49,6 +45,15 @@ const Map = () => {
 
     return window.removeEventListener('resize', resizeMap);
   }, []);
+
+  useEffect(() => {
+    if (map) {
+      map.removeObject(mark);
+      const marker = new H.map.Marker(props.target);
+      map.addObject(marker);
+      setMark(marker);
+    }
+  }, [props.target]);
 
   return <Box w="100%" h={['100%', '50vh']} ref={mapDom} />;
 };

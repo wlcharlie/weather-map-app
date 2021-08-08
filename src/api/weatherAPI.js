@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const currentWeather = async () => {
+export const currentWeather = async ({ lat, lng }) => {
   const options_CURRENT = {
     method: 'GET',
     url: 'https://community-open-weather-map.p.rapidapi.com/weather',
     params: {
-      lat: '55',
-      lon: '38',
+      lat: lat,
+      lon: lng,
       units: '"metric" or "imperial"',
     },
     headers: {
@@ -16,16 +16,16 @@ export const currentWeather = async () => {
   };
 
   const data = await axios.request(options_CURRENT);
-  console.log(data);
+  return data;
 };
 
-export const dailyWeather = async () => {
+export const dailyWeather = async ({ lat, lng }) => {
   const options_DAILY = {
     method: 'GET',
     url: 'https://community-open-weather-map.p.rapidapi.com/forecast/daily',
     params: {
-      lat: '55',
-      lon: '38',
+      lat: lat,
+      lon: lng,
       cnt: '7',
       units: 'metric or imperial',
     },
@@ -36,5 +36,5 @@ export const dailyWeather = async () => {
   };
 
   const data = await axios.request(options_DAILY);
-  console.log(data);
+  return data;
 };

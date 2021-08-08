@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -9,13 +9,18 @@ import {
   GridItem,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 import Map from './components/Map';
 import Weather from './components/Weather';
 import Chart from './components/Chart';
 
 function App() {
+  const [target, setTarget] = useState({ lat: 55, lng: 38 });
+  const coordinate = data => {
+    setTarget(data);
+  };
+  console.log(target);
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl">
@@ -26,11 +31,10 @@ function App() {
           templateColumns={[null, 'repeat(3, 1fr)']}
         >
           <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '3']}>
-            <Box w="100%" h="50vh" bg="tomato"></Box>
-            {/* <Map /> */}
+            <Map getCoordinate={coordinate} target={target} />
           </GridItem>
           <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '1']}>
-            <Weather />
+            <Weather target={target} />
           </GridItem>
           <GridItem
             w="100%"
@@ -39,7 +43,7 @@ function App() {
             borderRadius="lg"
             colSpan={[null, '2']}
           >
-            <Chart />
+            <Chart target={target} />
           </GridItem>
           <GridItem w="100%" h="100%" colSpan={[null, '3']}>
             <Flex align="center" justify="center" my={2}>
