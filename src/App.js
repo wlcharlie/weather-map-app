@@ -7,9 +7,7 @@ import {
   Text,
   Flex,
   GridItem,
-  Stack,
-  Skeleton,
-  Divider,
+  HStack,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 
@@ -50,7 +48,13 @@ function App() {
           </GridItem>
           <GridItem w="100%" h="100%" colSpan={[null, '3']}>
             <Flex align="center" justify="center" my={2}>
-              <Text fontSize="md">Charlie | Blog | Repo</Text>
+              <HStack fontSize="md">
+                <a href="https://www.linkedin.com/in/chiou-charlie/">
+                  Charlie |
+                </a>
+                <a href="https://wlcharlie.github.io/">Blog |</a>
+                <a href="https://github.com/wlcharlie/weather-map-app">Repo</a>
+              </HStack>
               <ColorModeSwitcher justifySelf="flex-end" />
             </Flex>
           </GridItem>
