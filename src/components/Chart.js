@@ -3,7 +3,7 @@ import { Skeleton } from '@chakra-ui/skeleton';
 
 import { unixConvert } from '../utils/unixConvert';
 import { tempConvert } from '../utils/tempConvert';
-import { dailyWeather } from '../api/weatherAPI';
+// import { dailyWeather } from '../api/weatherAPI';
 import dailyDummy from '../dailyDummy.json';
 import { useEffect, useState } from 'react';
 
@@ -13,7 +13,10 @@ const Chart = ({ target }) => {
   const [daily, setDaily] = useState(null);
 
   useEffect(async () => {
-    setDaily(await dailyWeather(target));
+    // setDaily(await dailyWeather(target));
+    setTimeout(() => {
+      setDaily(dailyDummy);
+    }, 2000);
   }, [target]);
   console.log(daily);
 
