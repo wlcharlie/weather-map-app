@@ -14,12 +14,10 @@ import {
   GridItem,
   Divider,
   HStack,
-  Stack,
   Skeleton,
   Image,
   Box,
 } from '@chakra-ui/react';
-import { relativeTimeRounding } from 'moment';
 
 const Weather = ({ target }) => {
   const [current, setCurrent] = useState(null);
@@ -59,10 +57,7 @@ const Weather = ({ target }) => {
   // );
 
   useEffect(async () => {
-    // setCurrent(await currentWeather(target));
-    setTimeout(() => {
-      setCurrent(currentDummy);
-    }, 500);
+    setCurrent(await currentWeather(target));
   }, [target]);
 
   return current ? (

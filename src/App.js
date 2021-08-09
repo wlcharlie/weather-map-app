@@ -32,7 +32,7 @@ function App() {
           templateColumns={[null, 'repeat(3, 1fr)']}
         >
           <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '3']}>
-            {/* <Map getCoordinate={coordinate} target={target} /> */}
+            <Map getCoordinate={coordinate} target={target} />
           </GridItem>
           <GridItem w="100%" h="100%" borderRadius="lg" colSpan={[null, '1']}>
             <Weather target={target} />
