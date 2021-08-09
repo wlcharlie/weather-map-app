@@ -6,6 +6,8 @@
 
 _`若Loading過久，代表API太累了，請稍後再試`_
 
+<img src="./public/05.png" width="600">
+
 ## 功能
 
 - 查看特定位置天氣
