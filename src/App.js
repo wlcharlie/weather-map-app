@@ -7,6 +7,9 @@ import {
   Text,
   Flex,
   GridItem,
+  Stack,
+  Skeleton,
+  Divider,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 

@@ -59,7 +59,11 @@ const Chart = ({ target }) => {
 
     return <Line data={data} options={options} />;
   } else {
-    return <Skeleton></Skeleton>;
+    return (
+      <Skeleton width="100%" height="100%">
+        chart
+      </Skeleton>
+    );
   }
 };
 

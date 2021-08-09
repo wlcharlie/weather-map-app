@@ -96,11 +96,49 @@ const Weather = ({ target }) => {
       </GridItem>
     </Grid>
   ) : (
-    <Stack>
-      <Skeleton height="20px" />
-      <Skeleton height="20px" />
-      <Skeleton height="20px" />
-    </Stack>
+    <Grid
+      w="100%"
+      h="100%"
+      templateColumns={['1fr 1fr', '1fr']}
+      templateRows={[null, '1fr 1fr']}
+    >
+      <GridItem>
+        <Flex
+          w="100%"
+          h="100%"
+          direction={['column', 'row']}
+          alignItems="center"
+          justifyContent={['center', 'space-around']}
+        >
+          <Skeleton width="125px" height="125px">
+            pic
+          </Skeleton>
+          <Box>
+            <Skeleton>weather</Skeleton>
+          </Box>
+        </Flex>
+      </GridItem>
+      <GridItem px={2}>
+        <Flex direction="column" h="100%" justify="center">
+          <Flex justify="space-between" align="baseline">
+            <Skeleton>Place</Skeleton>
+            <Skeleton>Date</Skeleton>
+          </Flex>
+          <Divider my={2} />
+          <Flex alignItems="center" justifyContent="space-between">
+            <Skeleton width="100%">temp</Skeleton>
+          </Flex>
+          <Divider my={1} />
+          <Flex alignItems="center" justifyContent="space-between">
+            <Skeleton width="100%">temp</Skeleton>
+          </Flex>
+          <Divider my={1} />
+          <Flex alignItems="center" justifyContent="space-between">
+            <Skeleton width="100%">temp</Skeleton>
+          </Flex>
+        </Flex>
+      </GridItem>
+    </Grid>
   );
 };
 
