@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Weather Map App
 
-## Available Scripts
+## 天氣 App
 
-In the project directory, you can run:
+[LIVE DEMO](https://wlcharlie.github.io/weather-map-app/)
 
-### `npm start`
+_`若Loading過久，代表API太累了，請稍後再試`_
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 功能
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- 查看特定位置天氣
+- 查看特定位置未來一周天氣 (Chart)
+- 查看圖表上的溫度轉換 (C/F/K)
+- 點擊地圖重新定位位置 (查看別處的天氣)
+- 縮放、移動地圖
+- 切換深夜配色 (最下方的太陽/月亮按鈕)
 
-### `npm test`
+## 工具及開發
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- Moment.js _(for time)_
+- Chart.js _(for chart)_
+- Axios _(for APIs)_
+- Chakra-ui
 
-### `npm run build`
+### APIs
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Open Weather Map _(via Rapid API)_
+- Here Map
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 預覽
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> Mobile
 
-### `npm run eject`
+<img src="./public/03.png" width="300">
+<img src="./public/02.png" width="300">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+> Web
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<img src="./public/01.png" width="600">
