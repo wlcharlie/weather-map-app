@@ -15,6 +15,7 @@ import {
   Stack,
   Skeleton,
   Image,
+  Box,
 } from '@chakra-ui/react';
 
 const Weather = ({ target }) => {
@@ -29,27 +30,34 @@ const Weather = ({ target }) => {
   console.log(current);
 
   return current ? (
-    <Grid w="100%" h="100%" templateColumns={['1fr 1fr', null]}>
+    <Grid
+      w="100%"
+      h="100%"
+      templateColumns={['1fr 1fr', '1fr']}
+      templateRows={[null, '1fr 1fr']}
+    >
       <GridItem>
         <Flex
           w="100%"
           h="100%"
-          direction="column"
+          direction={['column', 'row']}
           alignItems="center"
-          justifyContent="center"
+          justifyContent={['center', 'space-around']}
         >
           <Image
             boxSize="125px"
             src={`http://openweathermap.org/img/wn/${current.data.weather[0].icon}@2x.png`}
           />
           {/* <Text className={`fas fa-cloud fa-5x`} color="gray.300" /> */}
-          <Text fontSize="3xl">
-            {tempConvert(current.data.main.temp).tempC}
-          </Text>
-          <Text>{current.data.weather[0].main}</Text>
+          <Box>
+            <Text fontSize="3xl">
+              {tempConvert(current.data.main.temp).tempC}
+            </Text>
+            <Text>{current.data.weather[0].main}</Text>
+          </Box>
         </Flex>
       </GridItem>
-      <GridItem pr={1}>
+      <GridItem px={2}>
         <Flex direction="column" h="100%" justify="center">
           <Flex justify="space-between" align="baseline">
             <Text fontSize="3xl">{current.data.name}</Text>
